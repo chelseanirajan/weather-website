@@ -31,11 +31,12 @@ weatherForm.addEventListener('submit', (e) => {
 
     fetch('/weather?address='+location).then((response) => {
         response.json().then((data) => {
-            console.log(data)
             if(data.error){
                 messageOne.textContent = data.error
             } else {
-                messageOne.textContent = data.location +' '+ data.forcast.latitude+', '+ data.forcast.longitude;
+                messageOne.textContent = 'Current Date/Time: '+ data.forcast.locationTime + ' ' + '\n'+
+                    'It is '+ data.forcast.temperature + 'Celcius and humidity is '+data.forcast.humidity +'\n'
+                  + ' Location is ' + data.location;
                 // console.log(data.location)
                 // console.log(data.forcast)
             }
